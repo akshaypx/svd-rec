@@ -13,6 +13,7 @@ class Request(BaseModel):
 def predict(req: Request):
     prediction = model.predict(req.user_id, req.item_id)
     return {
-        "prediction": prediction.est,
-        "details": prediction.__dict__
+        "user_id": prediction.uid,
+        "item_id": prediction.iid,
+        "estimated_rating": prediction.est
     }
